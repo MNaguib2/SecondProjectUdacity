@@ -1,0 +1,17 @@
+{
+    "dev": {
+      "driver": "pg",
+      "host": "127.0.0.1",
+      "database": "storefront",
+      "user": "mena_udacity",
+      "password": "password123"
+    },
+    "test": {
+      "driver": "pg",
+      "host": "127.0.0.1",
+      "database": "fantasy_worlds_test",
+      "user": "Test_Udacity",
+      "password": "password123"
+    }
+  }
+
