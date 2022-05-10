@@ -1,3 +1,7 @@
 /* Replace with your SQL commands */
-Create table CardItem (Id_Card integer REFERENCES Cards(id), Id_Product integer REFERENCES Products(id),
-id serial primary key  , TotalPrice numeric(9, 3));
+Create table CardItem (
+    id_card integer REFERENCES Cards(id), 
+    id_product integer REFERENCES Products(id),
+    id serial primary key  , 
+    totalprice numeric(9, 3),
+    quantity integer not null);

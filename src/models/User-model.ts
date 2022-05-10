@@ -14,7 +14,7 @@ export class UserModel {
     async getAll(): Promise<User[]> {
         try {
             const conn = await client.connect();
-            const sql = 'select * from users';
+            const sql = 'select name , id , typeuser, email from users';
             const result = await conn.query(sql);
             conn.release();
             return result.rows;

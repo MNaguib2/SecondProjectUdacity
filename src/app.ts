@@ -6,9 +6,10 @@ import ProductRout from './route/Product-route';
 import { AdminMiddleWare } from './MiddleWare/Admin-middleware';
 import bodyParser from "body-parser";
 import { productmiddleware } from "./MiddleWare/Product-MiddleWare";
-import { ClientMiddleWare } from "./MiddleWare/Client-MiddleWare";
+import { ClientMiddleWare, CridetMiddleWare } from "./MiddleWare/Client-MiddleWare";
 import { ProductModel } from "./models/Product-model";
 import ClientRout from './route/client-route'
+import CreditRout from './route/Credit-Route'
 const app = Express();
 
 
@@ -20,9 +21,10 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json())
 app.use('/Auth', AuthRout)
-app.use('/Admin', AdminMiddleWare , AdminRout)
-app.use('/Product', productmiddleware , ProductRout)
-app.use('/Client', ClientMiddleWare , ClientRout)
+app.use('/Admin', AdminMiddleWare , AdminRout);
+app.use('/Product', productmiddleware , ProductRout);
+app.use('/Client', ClientMiddleWare , ClientRout);
+app.use('/Credit', CridetMiddleWare , CreditRout)
 
 app.use('**', (req: Request, res: Response) => {
   new ProductModel().getAllProduct()

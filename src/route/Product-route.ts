@@ -5,11 +5,11 @@ import { body } from 'express-validator';
 const route = express.Router();
 
 route.post('/addProduct', [body('name', 'Please Entre Valid Name').isString().isLength({ min: 4 }).trim(),
-body('price', 'Please Entre Valid price').isDecimal().trim(),
+body('price', 'Please Entre Valid price').isFloat({min: 1}).trim(),
 body('description', 'Please Entre Valid description').isString().isLength({ min: 15 }).trim()]
     , addProduct);
 route.put('/EditProduct/:id', [body('name', 'Please Entre Valid Name').isString().isLength({ min: 4 }).trim(),
-body('price', 'Please Entre Valid price').isDecimal().trim(),
+body('price', 'Please Entre Valid price').isFloat({min: 1}).trim(),
 body('description', 'Please Entre Valid description').isString().isLength({ min: 15 }).trim()],
     EditProduct);
 

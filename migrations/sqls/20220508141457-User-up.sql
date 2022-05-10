@@ -4,7 +4,7 @@ Create table Users (
     id serial primary key , 
     typeuser integer , 
     statue integer, 
-    Token text,
+    token text,
     email text not null unique,
     password text not null);
 

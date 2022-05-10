@@ -34,7 +34,7 @@ export function AdminMiddleWare(req: Request, res: Response, next: NextFunction)
                     return next(err);
                 })
         } else {
-            const error = new Error('Occur Error! UnAuthentication Please Try Change URL number 3');
+            const error = new Error('Occur Error! UnAuthentication Session is Terminate Please Try Login number 3');
             error.name = '401';
             return next(error);
         }

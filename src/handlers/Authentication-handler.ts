@@ -68,7 +68,7 @@ export function SignIn(req: Request, res: Response, next: NextFunction) {
         if (result && bcrybt.compareSync(password, result.password)) {
             const TokenGen = crypto.randomBytes(8).toString('hex');            
             const token = jwt.sign({ Token: TokenGen , email : result.email }, <string>process.env.PassWordDev,
-                {expiresIn : Date.now() - (3600000 * 456)});
+                {expiresIn : Date.now() - (3600000 * 458)});
                 new UserModel().AddUserToken(TokenGen , result.id)
                 .then(() => {
                     return res.status(202).json({                
