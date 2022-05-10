@@ -1,14 +1,14 @@
 import express from 'express';
 import { AddItemToCredit, RemoveItemToCredit, ShowCredit } from '../handlers/Credite-Handler';
-import { body, param } from 'express-validator';
+import { param } from 'express-validator';
 
 const route = express.Router();
 
-route.post('/addItemCredit/:id', 
+route.post('/addItemCart/:id', 
                             param('id', 'Please Entre Valid id Product').exists().isFloat({min:1}).isInt(),
                             AddItemToCredit
     );
 
     route.delete('/deleteProduct/:id', param('id', 'Please Entre Valid id Product').exists().isFloat({min:1}).isInt() , RemoveItemToCredit )
-route.get('/Cards', ShowCredit)
+route.get('/', ShowCredit)
     export default route;

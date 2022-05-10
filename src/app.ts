@@ -24,7 +24,7 @@ app.use('/Auth', AuthRout)
 app.use('/Admin', AdminMiddleWare , AdminRout);
 app.use('/Product', productmiddleware , ProductRout);
 app.use('/Client', ClientMiddleWare , ClientRout);
-app.use('/Credit', CridetMiddleWare , CreditRout)
+app.use('/Cart', CridetMiddleWare , CreditRout)
 
 app.use('**', (req: Request, res: Response) => {
   new ProductModel().getAllProduct()

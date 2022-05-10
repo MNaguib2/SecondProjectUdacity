@@ -1,32 +1,62 @@
 # SecondProjectUdacity
 Hellow 
+
+setup Steps
+1- npm i
+2- create DataBase in Postgres with name 'storefront'
+3- create role or user in postgrest 'mena_udacity' and password 'password123'
+4- Repeate step 2 and 3 with Detial test create DB with name 'storefront_test' and user 'Test_Udacity' and password 'password123'
+5- install db-migrate -g 
+6- write in comment db-migrate up
+7- use script 'dev-server'
+
 links To work With Api 
+
 http://localhost:3000/Auth/signup   (post)
         this link use when user want registeration new user but must body contain on 1- 'name' 2- 'email' 3- 'password' as asyntex password must contain min 6 charecter 
+
 http://localhost:3000/Auth/signIn   (put)
         this url use when user made login to your account and to get token this url send with body contain 2- 'email' 3- 'password' as asyntex password must contain min 6 charecter after this Api System send "Token" set this in Header to made Authentication
 
+
 Rul :- First Email will comming Admin this Have more Authorization in API Admin can change statue  to all storefront and change type to any user and can control in all any thing in API after this any register user will become client can't add any product just can purchase and add to cart to change type client to trader just only from Admin Trader can add and delete and edit on his product only
+
 
 http://localhost:3000/Admin/changestatue    (put)
         this url specialist to Admin only this to can to trader to add edite product in store and can client to made any purchase this url work in vice versa if online made offline 
+
 http://localhost:3000/Admin/upgredUser      (put)
         this url specialist to Admin only this to can convert client to trader and give user more Authentication or pull authentication this send with Header load 'Token' that certainly and body 'id' user you want change and 'typeuser' if 2 trader or 3 client
+
 http://localhost:3000/Admin/Users       (get)
         this url to show all users are already registeration just to admin every url should contain in header 'Token' to sure this email is already login
+
 http://localhost:3000/Client/       (get)
         this url mostlu use to client to show all Products every url should contain in header 'Token' to sure this email is already login
+
 http://localhost:3000/Client/logout     (put)
         this url use to all user to make Logout and delete tokenGen from DB this url must contain in header 'Token' to sure this email already login
+
 http://localhost:3000/Product/addProduct    (post)
         this url available to trader and admin only to can add product but must send with first 'Token' in Header second in body contain on 1- 'name' 2- 'price' 3- 'description' name must contain minimum 4 character and description contain on minimum 15 character and price must be number 
 
 http://localhost:3000/Product/EditProduct/:id      (put)
          this url available to trader and admin only to can add product but must send with first 'Token' in Header second in body contain on 1- 'name' 2- 'price' 3- 'description' name must contain minimum 4 character and description contain on minimum 15 character and price must be number With Very IMPORTANT add NUmber Id specialist to Product you want Edit
-        
 
+http://localhost:3000/Product/deleteProduct/:id      (delete) 
+        this url available to trader and admin to can trader control in his product if delete or edite but admin can control in all and From RUL must Store Online From Admin from back url  http://localhost:3000/Admin/changestatue 
 
+http://localhost:3000/Cart/addItemCart/:id      (post)
+        this url available to all user to can add any product to your cart 
 
+http://localhost:3000/Cart          (get)   
+        this url availabel to all user to show every item in cart ever user if exist this specialist to Each user individually just must send with header 'Token' to sure if already login or no 
+
+http://localhost:3000/Cart/deleteProduct/:id        (delete)
+        this url available to all user to can control in his cart if his want delete this from cart
+
+Note: - Every Request Must have 'Token' in Header to sure if user login or not just two url not add token when signin to this url already send you token and signup to Register New User (http://localhost:3000/Auth/signIn  ,  http://localhost:3000/Auth/signup)
+Note:- in case Defualt Route or use mistake url already convert to view Products Or show message error  but user not access any action
 
 
 
