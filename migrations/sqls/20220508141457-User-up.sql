@@ -1,8 +1,12 @@
 /* Replace with your SQL commands */
-Create table Users (name varchar(199) not null , username varchar(30) not null UNIQUE , 
-id serial primary key , Type integer , statue integer, 
-email text not null unique,
-password text not null,createAt TIMESTAMP);
+Create table Users (
+    name varchar(199) not null , 
+    id serial primary key , 
+    typeuser integer , 
+    statue integer, 
+    Token text,
+    email text not null unique,
+    password text not null);
 
 
 /* 
@@ -12,6 +16,7 @@ cases Type
 3 - is Client or customer
 
 Case statue in Admin
- online or offline to confirm and purchase 
+1- online 
+2 - offline to confirm and purchase 
 
 */
