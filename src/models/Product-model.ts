@@ -12,7 +12,8 @@ export class ProductModel {
     async getAllProduct(): Promise<Product[]> {
         try {
             const conn = await client.connect();
-            const sql = 'select name , price , description from Products';
+            //console.log(conn);
+            const sql = 'select name , price , description from products';
             const result = await conn.query(sql);
             conn.release();
             return result.rows;

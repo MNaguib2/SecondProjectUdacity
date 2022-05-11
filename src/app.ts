@@ -70,3 +70,5 @@ app.use((error: ErrorRequestHandler, req: Request, res: Response, next : NextFun
 app.listen({ port: 3000 }, () => {
   console.log('server Running Ok !!');
 });
+
+export default app;

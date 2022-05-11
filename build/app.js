@@ -70,3 +70,4 @@ app.use((error, req, res, next) => {
 app.listen({ port: 3000 }, () => {
     console.log('server Running Ok !!');
 });
+exports.default = app;

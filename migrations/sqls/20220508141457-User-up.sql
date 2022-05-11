@@ -1,5 +1,5 @@
 /* Replace with your SQL commands */
-Create table Users (
+Create table users (
     name varchar(199) not null , 
     id serial primary key , 
     typeuser integer , 

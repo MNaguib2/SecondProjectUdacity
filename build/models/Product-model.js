@@ -19,7 +19,8 @@ class ProductModel {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const conn = yield database_1.default.connect();
-                const sql = 'select name , price , description from Products';
+                //console.log(conn);
+                const sql = 'select name , price , description from products';
                 const result = yield conn.query(sql);
                 conn.release();
                 return result.rows;

@@ -26,9 +26,9 @@ if(process.env.ENV ==='dev'){
 } else {
     client = new Pool({
         host: "127.0.0.1",
-        database: "test_test",
-        user: "test_user",
-        password: "789",
+        database: "storefront_test",
+        user: "test_udacity",
+        password: "password123",
         port: 5432
     }); 
 }

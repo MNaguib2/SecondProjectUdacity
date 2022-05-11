@@ -11,8 +11,8 @@ export function AdminMiddleWare(req: Request, res: Response, next: NextFunction)
     jwt.verify(<string>token, <string>process.env.PassWordDev, (err, decoded) => {
         if (err) {
             res.status(401).json({
-                message: 'Occur Error! Please Back To Developer number 1'
-            })
+                message: 'Occur Error! Please Back To Developer number 1 Please Try another URL'
+            }).redirect('/');
             return console.log(err);
         }
         const email = (decoded as jwt.JwtPayload).email;

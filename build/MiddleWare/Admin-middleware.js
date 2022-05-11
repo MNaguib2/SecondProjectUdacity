@@ -33,8 +33,8 @@ function AdminMiddleWare(req, res, next) {
     jwt.verify(token, process.env.PassWordDev, (err, decoded) => {
         if (err) {
             res.status(401).json({
-                message: 'Occur Error! Please Back To Developer number 1'
-            });
+                message: 'Occur Error! Please Back To Developer number 1 Please Try another URL'
+            }).redirect('/');
             return console.log(err);
         }
         const email = decoded.email;
@@ -43,6 +43,8 @@ function AdminMiddleWare(req, res, next) {
         if (Date.now() < numberexpiration) {
             new User_model_1.UserModel().FindUserByEmail(email)
                 .then((resultUser) => {
+                console.log(resultUser);
+                console.log(token);
                 if (resultUser && resultUser.typeuser === 1 && resultUser.token === token) {
                     req.user = resultUser;
                     return next();

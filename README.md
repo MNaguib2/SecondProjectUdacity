@@ -1,7 +1,10 @@
 # SecondProjectUdacity
 Hellow 
 
+
+
 setup Steps
+Port-Server : 3000      Port-DataBase : 5432
 1- npm i
 2- create DataBase in Postgres with name 'storefront'
 3- create role or user in postgrest 'mena_udacity' and password 'password123'
@@ -9,6 +12,39 @@ setup Steps
 5- install db-migrate -g 
 6- write in comment db-migrate up
 7- use script 'dev-server'
+
+DataBase Schema :- 
+
+User {
+    name varchar(199) not null , 
+    id serial primary key , 
+    typeuser integer , 
+    statue integer, 
+    token text,
+    email text not null unique,
+    password text not null
+}
+products {
+    name varchar(199) not null , 
+    price NUMERIC(9,3), 
+    description text ,
+    id serial primary key, 
+    Id_user integer REFERENCES users(id)
+}
+
+Carts {
+        id_user integer REFERENCES users(id),
+        id serial primary key, 
+        totalprice numeric(9,3)
+}
+
+CartItem {
+        id_card integer REFERENCES Cards(id), 
+    id_product integer REFERENCES Products(id),
+    id serial primary key  , 
+    totalprice numeric(9, 3),
+    quantity integer not null
+}
 
 links To work With Api 
 
