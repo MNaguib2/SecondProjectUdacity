@@ -33,7 +33,7 @@ export function UpgreadUser (req: Request, res: Response, next:NextFunction) {
         error.name = '409';
         return next(error);
     }
-    if((req as IGetUserAuthInfoRequest).user.typeuser !== 1){
+    if((req as IGetUserAuthInfoRequest).user.typeuser === 1 && id !== 1){
         new AdminModel().UpgredUser(typeuser , id)
         .then(result => {
             if (result === 'UPDATE') {

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "set ENV=test db-migrate --env test up && jasmine-ts && db-migrate db:drop test",
+    "test": "set ENV=test db-migrate --env test up && jasmine-ts && db-migrate reset --env test",
     "dev-server": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./build/app.js\"",
     "dev" : "set ENV=test && nodemon ./src/app.ts",
     "build": "tsc -p .",

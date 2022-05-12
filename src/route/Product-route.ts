@@ -13,5 +13,5 @@ body('price', 'Please Entre Valid price').isFloat({min: 1}).trim(),
 body('description', 'Please Entre Valid description').isString().isLength({ min: 15 }).trim()],
     EditProduct);
 
-    route.delete('/deleteProduct/:id' , DeleteProduct )
+route.delete('/deleteProduct/:id' , DeleteProduct )
 export default route;
