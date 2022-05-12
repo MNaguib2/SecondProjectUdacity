@@ -126,3 +126,4 @@ Errors Numer
 27- in credit Handle when try Deleted Item from Credit during confirm Deleted
 28- in credut Model During Delete Item From Card but mostly item not found in this card
 29- in Credite Model when try getAllCreditItem specialist to card id
+30- in Product Handler when user try Delete function but product want deleted not found or user not admin or user not owner to product

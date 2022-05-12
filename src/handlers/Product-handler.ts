@@ -12,7 +12,7 @@ export function addProduct(req: Request, res: Response, next: NextFunction) {
         const description = req.body.description;
         //console.log(Id_user);
         if (Id_user !== 3) {
-            new ProductModel().ADDProduct({ name: name, description: description, id: 0, Id_user: Id_user, price: price })
+            new ProductModel().ADDProduct({ name: name, description: description, id: 0, id_user: Id_user, price: price })
                 .then(result => {
                     if (result === "INSERT") {
                         res.status(201).json({
@@ -38,12 +38,14 @@ export function addProduct(req: Request, res: Response, next: NextFunction) {
 export function EditProduct(req: Request, res: Response, next: NextFunction) {
     const Id_Product: number = (req.params.id as unknown) as number;
     new ProductModel().getProductByID(Id_Product)
-        .then(product => {
-            if (product && (product.Id_user === (req as IGetUserAuthInfoRequest).user.id || (req as IGetUserAuthInfoRequest).user.typeuser == 1)) {
+        .then(product => {            
+            if (product && 
+                (product.id_user === (req as IGetUserAuthInfoRequest).user.id || (req as IGetUserAuthInfoRequest).user.typeuser === 1)) {
+
                 const name = req.body.name;
                 const description = req.body.description;
                 const price = req.body.price;
-                new ProductModel().EditProduct({ name: name, description: description, id: Id_Product, price: price, Id_user: 0 })
+                new ProductModel().EditProduct({ name: name, description: description, id: Id_Product, price: price, id_user: 0 })
                     .then(result => {
                         if (result === 'UPDATE') {
                             res.status(200).json({
@@ -70,7 +72,8 @@ export function DeleteProduct(req: Request, res: Response, next: NextFunction) {
     const Id_Product: number = (req.params.id as unknown) as number;
     new ProductModel().getProductByID(Id_Product)
         .then(result => {
-            if (result && (result.Id_user === (req as IGetUserAuthInfoRequest).user.id || (req as IGetUserAuthInfoRequest).user.typeuser == 1)) {
+            if (result && 
+                (result.id_user === (req as IGetUserAuthInfoRequest).user.id || (req as IGetUserAuthInfoRequest).user.typeuser == 1)) {
                 new ProductModel().DeleteProductByID(Id_Product)
                     .then(Deleted => {
                         if (Deleted === 'DELETE') {
@@ -86,7 +89,7 @@ export function DeleteProduct(req: Request, res: Response, next: NextFunction) {
                         return next(err);
                     })
             } else {
-                const error = new Error('Occur Error! User UN Authenticated to edite in this product error 5');
+                const error = new Error('Occur Error! User UN Authenticated to Delete in this product or Product not found error 30');
                 error.name = '401 ';
                 throw error;
             }

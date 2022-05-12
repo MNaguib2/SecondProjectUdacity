@@ -139,7 +139,7 @@ export function ShowCredit(req: Request, res: Response, next: NextFunction) {
                             })
                         } else {
                             res.status(404).json({
-                                Message: "No Items Found In this card"
+                                message: "No Items Found In this card"
                             })
                         }
                     }).catch(err => {

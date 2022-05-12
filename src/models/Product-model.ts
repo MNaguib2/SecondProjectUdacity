@@ -4,7 +4,7 @@ export type Product = {
     id: number;
     name: string;
     description: string;
-    Id_user: number;
+    id_user: number;
     price: number ;
 }
 
@@ -25,7 +25,7 @@ export class ProductModel {
         try {
             const conn = await client.connect();
             const sql = 'INSERT INTO products(name, price, id_user, description) VALUES ' +
-                                    `('${Product.name}', '${Product.price}', '${Product.Id_user}', '${Product.description}')`;
+                                    `('${Product.name}', '${Product.price}', '${Product.id_user}', '${Product.description}')`;
             const result = await conn.query(sql);
             conn.release();
             //console.log(result)
