@@ -13,9 +13,26 @@ Port-Server : 3000      Port-DataBase : 5432
 6- write in comment db-migrate up
 7- use script 'dev-server'
 
-DataBase Schema :- 
+ENV Variable : - 
 
-User {
+POSTGRES_HOST = '127.0.0.1'
+POSTGRES_DB = 'storefront'
+POSTGRES_USER = 'mena_udacity'
+POSTGRES_PASSWORD = 'password123'
+POSTGRES_PORT = 5432
+PassWordDev = 'TestPasswordStoreFrontAPI'
+ENV=dev
+
+DataBase Schema :- 
+CREATE user mena_udacity with encrypted password 'password123' superuser login;
+
+CREATE user test_udacity with encrypted password 'password123' superuser login;
+
+CREATE DATABASE storefront OWNER mena_udacity;
+
+CREATE DATABASE storefront_test OWNER test_udacity;
+
+CREATE TABLE user (
     name varchar(199) not null , 
     id serial primary key , 
     typeuser integer , 
@@ -23,28 +40,28 @@ User {
     token text,
     email text not null unique,
     password text not null
-}
-products {
+)
+CREATE TABLE products (
     name varchar(199) not null , 
     price NUMERIC(9,3), 
     description text ,
     id serial primary key, 
     Id_user integer REFERENCES users(id)
-}
+)
 
-Carts {
+CREATE TABLE carts (
         id_user integer REFERENCES users(id),
         id serial primary key, 
         totalprice numeric(9,3)
-}
+)
 
-CartItem {
+CREATE TABLE cartitem (
         id_card integer REFERENCES Cards(id), 
     id_product integer REFERENCES Products(id),
     id serial primary key  , 
     totalprice numeric(9, 3),
     quantity integer not null
-}
+)
 
 links To work With Api 
 
