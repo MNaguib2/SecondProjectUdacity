@@ -9,7 +9,10 @@ const {
     POSTGRES_DB,
     POSTGRES_USER,
     POSTGRES_PASSWORD,
-    POSTGRES_PORT
+    POSTGRES_PORT,
+    POSTGRES_Test_DB,
+    POSTGRES_Test_USER,
+    POSTGRES_Test_PASSWORD
 } = process.env;
 let client = new Pool;
 
@@ -25,11 +28,11 @@ if(process.env.ENV ==='dev'){
     }); 
 } else {
     client = new Pool({
-        host: "127.0.0.1",
-        database: "storefront_test",
-        user: "test_udacity",
-        password: "password123",
-        port: 5432
+        host: POSTGRES_HOST,
+        database: POSTGRES_Test_DB,
+        user: POSTGRES_Test_USER,
+        password: POSTGRES_Test_PASSWORD,
+        port: (POSTGRES_PORT as unknown) as number
     }); 
 }
 export default client;

@@ -22,6 +22,9 @@ POSTGRES_PASSWORD = 'password123'
 POSTGRES_PORT = 5432
 PassWordDev = 'TestPasswordStoreFrontAPI'
 ENV=dev
+POSTGRES_Test_DB = 'storefront_test'
+POSTGRES_Test_USER = 'test_udacity'
+POSTGRES_Test_PASSWORD = 'password123'
 
 DataBase Schema :- 
 CREATE user mena_udacity with encrypted password 'password123' superuser login;
