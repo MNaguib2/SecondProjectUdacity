@@ -1,15 +1,18 @@
 import supertest from 'supertest';
 import app from '../app';
 import { ResponseExpres } from '../definitionfile';
+import { UserModel } from '../models/User-model';
 
 const request = supertest(app);
-let Data : ResponseExpres;
+export let Data : ResponseExpres;
 describe('test SignUp', () => {
-    beforeAll((done) => {
-        request.post('/Auth/signUp').send({'email': 'test1@test.com', 'name':'mena afefe' , 'password': '123456'})
+    beforeAll(async (done) => {
+        await new UserModel().ClearAll();
+        done();
+        request.post('/Auth/signUp').send({'email': 'test@test.com', 'name':'mena afefe' , 'password': '123456'})
         .then((res) => {
             Data = res as unknown as ResponseExpres;
-            //if((Data.status as unknown as number) !== 201) done.fail(Data._body.message);
+            if((Data.status as unknown as number) !== 201) done.fail(Data._body.message);
             done();
         })
     })
@@ -24,7 +27,7 @@ describe('test SignUp', () => {
   });
 });
 
-xdescribe('Test Admin URl' , () =>{
+describe('Test Admin URl' , () =>{
     let ResponseData : ResponseExpres;  
         xit('test Change Statue ' , async (done) => {           
            await request.put('/Admin/changestatue').set('Token', Data._body.Token).then(res => {
@@ -131,7 +134,7 @@ describe('Test Client URl' , () =>{
             console.log(ResponseData._body)
             expect(ResponseData.status).toEqual(200);
         })
-        it('test Show All Product to Client ' , async () => {           
+        xit('test Show All Product to Client ' , async () => {           
             await request.put('/Client/logout').set('Token', Data._body.Token).then(res => {
              ResponseData = res as unknown as ResponseExpres;
              });             

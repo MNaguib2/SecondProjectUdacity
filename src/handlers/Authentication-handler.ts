@@ -25,7 +25,8 @@ export function signuphandler(req: Request, res: Response, next : NextFunction) 
                     });
                 } else {
                     const hashOassword = bcrybt.hashSync(password, 12);
-                    new UserModel().AddUser({ name: name, email: email, password: hashOassword, typeuser: 3, statue: 0, id: 0, token: null })
+                    new UserModel().AddUser({ name: name, email: email, password: hashOassword, typeuser: 3, statue: 0, id: 0,
+                         token: null })
                         .then(added => {
                             console.log("Successfully!! Add number Users " + added);
                             return res.status(201).json({

@@ -47,7 +47,7 @@ export class UserModel {
         }
     }
     async FindUserByEmail(email: string): Promise<User> {
-        try {            
+        try {
             const conn = await client.connect();            
             const sql = `SELECT * FROM users WHERE email = '${email}'`;
             const result = await conn.query(sql);
@@ -69,9 +69,9 @@ export class UserModel {
         }
     }
     async FindBytypeuser(typeuser: number): Promise<User> {
-        try {
+        try {            
             const conn = await client.connect();
-            const sql = `SELECT statue from users WHERE typeuser = ${typeuser};`;
+            const sql = `SELECT statue, id from users WHERE typeuser = ${typeuser};`;
             const result = await conn.query(sql);
             conn.release();
             return result.rows[0];
@@ -84,6 +84,23 @@ export class UserModel {
             const conn = await client.connect();
             const sql = `UPDATE users SET "token"= '' WHERE id = ${id};`;
             const result = await conn.query(sql);
+            conn.release();
+            return result.command;
+        } catch (err) {
+            throw new Error(`Cannot logout user via delete tokenGen error 12 ${err}`);
+        }
+    }
+    async ClearAll() {
+        try {
+            const conn = await client.connect();
+            let sql = `delete from carditem`;
+            let result = await conn.query(sql);
+            sql = `delete from cards`;
+            result = await conn.query(sql);
+            sql = `delete from products`;
+            result = await conn.query(sql);
+            sql = `delete from users`;
+            result = await conn.query(sql);            
             conn.release();
             return result.command;
         } catch (err) {

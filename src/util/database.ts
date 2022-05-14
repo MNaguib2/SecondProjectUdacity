@@ -16,7 +16,7 @@ const {
 } = process.env;
 let client = new Pool;
 
-//console.log(process.env.POSTGRES_DB);
+// console.log(process.env.ENV);
 
 if(process.env.ENV ==='dev'){
     client = new Pool({
@@ -27,6 +27,7 @@ if(process.env.ENV ==='dev'){
         port: (POSTGRES_PORT as unknown) as number
     }); 
 } else {
+    // console.log(POSTGRES_Test_DB);
     client = new Pool({
         host: POSTGRES_HOST,
         database: POSTGRES_Test_DB,

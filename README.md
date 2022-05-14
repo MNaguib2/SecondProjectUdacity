@@ -10,8 +10,9 @@ Port-Server : 3000      Port-DataBase : 5432
 3- create role or user in postgrest 'mena_udacity' and password 'password123'
 4- Repeate step 2 and 3 with Detial test create DB with name 'storefront_test' and user 'Test_Udacity' and password 'password123'
 5- install db-migrate -g 
-6- write in comment db-migrate up
-7- use script 'dev-server'
+6- write in command db-migrate up
+7- write in command db-migrate --env test up to establist db tables test
+8- use script 'dev-server'
 
 ENV Variable : - 
 
