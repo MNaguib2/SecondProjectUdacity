@@ -134,7 +134,7 @@ describe('Test Client URl' , () =>{
             console.log(ResponseData._body)
             expect(ResponseData.status).toEqual(200);
         })
-        xit('test Show All Product to Client ' , async () => {           
+        it('test Show All Product to Client ' , async () => {           
             await request.put('/Client/logout').set('Token', Data._body.Token).then(res => {
              ResponseData = res as unknown as ResponseExpres;
              });             
